@@ -19,17 +19,16 @@ import (
 	"strings"
 )
 
-
 // OptimizeApiService OptimizeApi service
 type OptimizeApiService service
 
-type ApiBackupIdDeleteRequest struct {
-	ctx context.Context
+type OptimizeApiBackupIdDeleteRequest struct {
+	ctx        context.Context
 	ApiService *OptimizeApiService
-	backupId int64
+	backupId   int64
 }
 
-func (r ApiBackupIdDeleteRequest) Execute() (*http.Response, error) {
+func (r OptimizeApiBackupIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.BackupIdDeleteExecute(r)
 }
 
@@ -38,24 +37,24 @@ BackupIdDelete Delete a backup
 
 Delete a backup with the given id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param backupId Id of the backup
- @return ApiBackupIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param backupId Id of the backup
+	@return OptimizeApiBackupIdDeleteRequest
 */
-func (a *OptimizeApiService) BackupIdDelete(ctx context.Context, backupId int64) ApiBackupIdDeleteRequest {
-	return ApiBackupIdDeleteRequest{
+func (a *OptimizeApiService) BackupIdDelete(ctx context.Context, backupId int64) OptimizeApiBackupIdDeleteRequest {
+	return OptimizeApiBackupIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		backupId: backupId,
+		ctx:        ctx,
+		backupId:   backupId,
 	}
 }
 
 // Execute executes the request
-func (a *OptimizeApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (*http.Response, error) {
+func (a *OptimizeApiService) BackupIdDeleteExecute(r OptimizeApiBackupIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OptimizeApiService.BackupIdDelete")
@@ -119,8 +118,8 @@ func (a *OptimizeApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -130,8 +129,8 @@ func (a *OptimizeApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -141,8 +140,8 @@ func (a *OptimizeApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -150,13 +149,13 @@ func (a *OptimizeApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (
 	return localVarHTTPResponse, nil
 }
 
-type ApiBackupIdGetRequest struct {
-	ctx context.Context
+type OptimizeApiBackupIdGetRequest struct {
+	ctx        context.Context
 	ApiService *OptimizeApiService
-	backupId int64
+	backupId   int64
 }
 
-func (r ApiBackupIdGetRequest) Execute() (*BackupInfo, *http.Response, error) {
+func (r OptimizeApiBackupIdGetRequest) Execute() (*BackupInfo, *http.Response, error) {
 	return r.ApiService.BackupIdGetExecute(r)
 }
 
@@ -165,26 +164,27 @@ BackupIdGet Get information of a backup
 
 A detailed information of the backup with the give backup id.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param backupId Id of the backup
- @return ApiBackupIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param backupId Id of the backup
+	@return OptimizeApiBackupIdGetRequest
 */
-func (a *OptimizeApiService) BackupIdGet(ctx context.Context, backupId int64) ApiBackupIdGetRequest {
-	return ApiBackupIdGetRequest{
+func (a *OptimizeApiService) BackupIdGet(ctx context.Context, backupId int64) OptimizeApiBackupIdGetRequest {
+	return OptimizeApiBackupIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		backupId: backupId,
+		ctx:        ctx,
+		backupId:   backupId,
 	}
 }
 
 // Execute executes the request
-//  @return BackupInfo
-func (a *OptimizeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*BackupInfo, *http.Response, error) {
+//
+//	@return BackupInfo
+func (a *OptimizeApiService) BackupIdGetExecute(r OptimizeApiBackupIdGetRequest) (*BackupInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BackupInfo
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BackupInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OptimizeApiService.BackupIdGet")
@@ -248,8 +248,8 @@ func (a *OptimizeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -259,8 +259,8 @@ func (a *OptimizeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -270,8 +270,8 @@ func (a *OptimizeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -281,8 +281,8 @@ func (a *OptimizeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -292,8 +292,8 @@ func (a *OptimizeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -310,12 +310,12 @@ func (a *OptimizeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRootGetRequest struct {
-	ctx context.Context
+type OptimizeApiRootGetRequest struct {
+	ctx        context.Context
 	ApiService *OptimizeApiService
 }
 
-func (r ApiRootGetRequest) Execute() ([]BackupInfo, *http.Response, error) {
+func (r OptimizeApiRootGetRequest) Execute() ([]BackupInfo, *http.Response, error) {
 	return r.ApiService.RootGetExecute(r)
 }
 
@@ -325,25 +325,25 @@ RootGet Lists all available backups
 Returns a list of all available backups with their state and additional info,
 sorted in descending order of backupId.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRootGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return OptimizeApiRootGetRequest
 */
-func (a *OptimizeApiService) RootGet(ctx context.Context) ApiRootGetRequest {
-	return ApiRootGetRequest{
+func (a *OptimizeApiService) RootGet(ctx context.Context) OptimizeApiRootGetRequest {
+	return OptimizeApiRootGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []BackupInfo
-func (a *OptimizeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, *http.Response, error) {
+//
+//	@return []BackupInfo
+func (a *OptimizeApiService) RootGetExecute(r OptimizeApiRootGetRequest) ([]BackupInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []BackupInfo
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []BackupInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OptimizeApiService.RootGet")
@@ -403,8 +403,8 @@ func (a *OptimizeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -414,8 +414,8 @@ func (a *OptimizeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -425,8 +425,8 @@ func (a *OptimizeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -436,8 +436,8 @@ func (a *OptimizeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -454,18 +454,18 @@ func (a *OptimizeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRootPostRequest struct {
-	ctx context.Context
-	ApiService *OptimizeApiService
+type OptimizeApiRootPostRequest struct {
+	ctx               context.Context
+	ApiService        *OptimizeApiService
 	takeBackupRequest *TakeBackupRequest
 }
 
-func (r ApiRootPostRequest) TakeBackupRequest(takeBackupRequest TakeBackupRequest) ApiRootPostRequest {
+func (r OptimizeApiRootPostRequest) TakeBackupRequest(takeBackupRequest TakeBackupRequest) OptimizeApiRootPostRequest {
 	r.takeBackupRequest = &takeBackupRequest
 	return r
 }
 
-func (r ApiRootPostRequest) Execute() (*TakeBackupResponse, *http.Response, error) {
+func (r OptimizeApiRootPostRequest) Execute() (*TakeBackupResponse, *http.Response, error) {
 	return r.ApiService.RootPostExecute(r)
 }
 
@@ -474,24 +474,25 @@ RootPost Takes a backup
 
 Start taking a backup with the given backupId
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRootPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return OptimizeApiRootPostRequest
 */
-func (a *OptimizeApiService) RootPost(ctx context.Context) ApiRootPostRequest {
-	return ApiRootPostRequest{
+func (a *OptimizeApiService) RootPost(ctx context.Context) OptimizeApiRootPostRequest {
+	return OptimizeApiRootPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TakeBackupResponse
-func (a *OptimizeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupResponse, *http.Response, error) {
+//
+//	@return TakeBackupResponse
+func (a *OptimizeApiService) RootPostExecute(r OptimizeApiRootPostRequest) (*TakeBackupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TakeBackupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TakeBackupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OptimizeApiService.RootPost")
@@ -556,8 +557,8 @@ func (a *OptimizeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -567,8 +568,8 @@ func (a *OptimizeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -578,8 +579,8 @@ func (a *OptimizeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -589,8 +590,8 @@ func (a *OptimizeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -600,8 +601,8 @@ func (a *OptimizeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

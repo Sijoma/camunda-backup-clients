@@ -19,17 +19,16 @@ import (
 	"strings"
 )
 
-
 // TasklistApiService TasklistApi service
 type TasklistApiService service
 
-type ApiBackupIdDeleteRequest struct {
-	ctx context.Context
+type TasklistApiBackupIdDeleteRequest struct {
+	ctx        context.Context
 	ApiService *TasklistApiService
-	backupId int64
+	backupId   int64
 }
 
-func (r ApiBackupIdDeleteRequest) Execute() (*http.Response, error) {
+func (r TasklistApiBackupIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.BackupIdDeleteExecute(r)
 }
 
@@ -38,24 +37,24 @@ BackupIdDelete Delete a backup
 
 Delete a backup with the given id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param backupId Id of the backup
- @return ApiBackupIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param backupId Id of the backup
+	@return TasklistApiBackupIdDeleteRequest
 */
-func (a *TasklistApiService) BackupIdDelete(ctx context.Context, backupId int64) ApiBackupIdDeleteRequest {
-	return ApiBackupIdDeleteRequest{
+func (a *TasklistApiService) BackupIdDelete(ctx context.Context, backupId int64) TasklistApiBackupIdDeleteRequest {
+	return TasklistApiBackupIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		backupId: backupId,
+		ctx:        ctx,
+		backupId:   backupId,
 	}
 }
 
 // Execute executes the request
-func (a *TasklistApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (*http.Response, error) {
+func (a *TasklistApiService) BackupIdDeleteExecute(r TasklistApiBackupIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasklistApiService.BackupIdDelete")
@@ -119,8 +118,8 @@ func (a *TasklistApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -130,8 +129,8 @@ func (a *TasklistApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -141,8 +140,8 @@ func (a *TasklistApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -150,13 +149,13 @@ func (a *TasklistApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (
 	return localVarHTTPResponse, nil
 }
 
-type ApiBackupIdGetRequest struct {
-	ctx context.Context
+type TasklistApiBackupIdGetRequest struct {
+	ctx        context.Context
 	ApiService *TasklistApiService
-	backupId int64
+	backupId   int64
 }
 
-func (r ApiBackupIdGetRequest) Execute() (*BackupInfo, *http.Response, error) {
+func (r TasklistApiBackupIdGetRequest) Execute() (*BackupInfo, *http.Response, error) {
 	return r.ApiService.BackupIdGetExecute(r)
 }
 
@@ -165,26 +164,27 @@ BackupIdGet Get information of a backup
 
 A detailed information of the backup with the give backup id.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param backupId Id of the backup
- @return ApiBackupIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param backupId Id of the backup
+	@return TasklistApiBackupIdGetRequest
 */
-func (a *TasklistApiService) BackupIdGet(ctx context.Context, backupId int64) ApiBackupIdGetRequest {
-	return ApiBackupIdGetRequest{
+func (a *TasklistApiService) BackupIdGet(ctx context.Context, backupId int64) TasklistApiBackupIdGetRequest {
+	return TasklistApiBackupIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		backupId: backupId,
+		ctx:        ctx,
+		backupId:   backupId,
 	}
 }
 
 // Execute executes the request
-//  @return BackupInfo
-func (a *TasklistApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*BackupInfo, *http.Response, error) {
+//
+//	@return BackupInfo
+func (a *TasklistApiService) BackupIdGetExecute(r TasklistApiBackupIdGetRequest) (*BackupInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BackupInfo
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BackupInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasklistApiService.BackupIdGet")
@@ -248,8 +248,8 @@ func (a *TasklistApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -259,8 +259,8 @@ func (a *TasklistApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -270,8 +270,8 @@ func (a *TasklistApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -281,8 +281,8 @@ func (a *TasklistApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -292,8 +292,8 @@ func (a *TasklistApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -310,12 +310,12 @@ func (a *TasklistApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*Backu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRootGetRequest struct {
-	ctx context.Context
+type TasklistApiRootGetRequest struct {
+	ctx        context.Context
 	ApiService *TasklistApiService
 }
 
-func (r ApiRootGetRequest) Execute() ([]BackupInfo, *http.Response, error) {
+func (r TasklistApiRootGetRequest) Execute() ([]BackupInfo, *http.Response, error) {
 	return r.ApiService.RootGetExecute(r)
 }
 
@@ -325,25 +325,25 @@ RootGet Lists all available backups
 Returns a list of all available backups with their state and additional info,
 sorted in descending order of backupId.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRootGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return TasklistApiRootGetRequest
 */
-func (a *TasklistApiService) RootGet(ctx context.Context) ApiRootGetRequest {
-	return ApiRootGetRequest{
+func (a *TasklistApiService) RootGet(ctx context.Context) TasklistApiRootGetRequest {
+	return TasklistApiRootGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []BackupInfo
-func (a *TasklistApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, *http.Response, error) {
+//
+//	@return []BackupInfo
+func (a *TasklistApiService) RootGetExecute(r TasklistApiRootGetRequest) ([]BackupInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []BackupInfo
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []BackupInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasklistApiService.RootGet")
@@ -403,8 +403,8 @@ func (a *TasklistApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -414,8 +414,8 @@ func (a *TasklistApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -425,8 +425,8 @@ func (a *TasklistApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -436,8 +436,8 @@ func (a *TasklistApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -454,18 +454,18 @@ func (a *TasklistApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRootPostRequest struct {
-	ctx context.Context
-	ApiService *TasklistApiService
+type TasklistApiRootPostRequest struct {
+	ctx               context.Context
+	ApiService        *TasklistApiService
 	takeBackupRequest *TakeBackupRequest
 }
 
-func (r ApiRootPostRequest) TakeBackupRequest(takeBackupRequest TakeBackupRequest) ApiRootPostRequest {
+func (r TasklistApiRootPostRequest) TakeBackupRequest(takeBackupRequest TakeBackupRequest) TasklistApiRootPostRequest {
 	r.takeBackupRequest = &takeBackupRequest
 	return r
 }
 
-func (r ApiRootPostRequest) Execute() (*TakeBackupResponse, *http.Response, error) {
+func (r TasklistApiRootPostRequest) Execute() (*TakeBackupResponse, *http.Response, error) {
 	return r.ApiService.RootPostExecute(r)
 }
 
@@ -474,24 +474,25 @@ RootPost Takes a backup
 
 Start taking a backup with the given backupId
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRootPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return TasklistApiRootPostRequest
 */
-func (a *TasklistApiService) RootPost(ctx context.Context) ApiRootPostRequest {
-	return ApiRootPostRequest{
+func (a *TasklistApiService) RootPost(ctx context.Context) TasklistApiRootPostRequest {
+	return TasklistApiRootPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TakeBackupResponse
-func (a *TasklistApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupResponse, *http.Response, error) {
+//
+//	@return TakeBackupResponse
+func (a *TasklistApiService) RootPostExecute(r TasklistApiRootPostRequest) (*TakeBackupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TakeBackupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TakeBackupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TasklistApiService.RootPost")
@@ -556,8 +557,8 @@ func (a *TasklistApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -567,8 +568,8 @@ func (a *TasklistApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -578,8 +579,8 @@ func (a *TasklistApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -589,8 +590,8 @@ func (a *TasklistApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -600,8 +601,8 @@ func (a *TasklistApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupR
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

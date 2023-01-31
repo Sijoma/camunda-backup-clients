@@ -1,2 +1,4 @@
 additionalProperties:
+  enumClassPrefix: true
+  structPrefix: true
   packageName: camunda_backup_clients

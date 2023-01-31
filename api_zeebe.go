@@ -19,17 +19,16 @@ import (
 	"strings"
 )
 
-
 // ZeebeApiService ZeebeApi service
 type ZeebeApiService service
 
-type ApiBackupIdDeleteRequest struct {
-	ctx context.Context
+type ZeebeApiBackupIdDeleteRequest struct {
+	ctx        context.Context
 	ApiService *ZeebeApiService
-	backupId int64
+	backupId   int64
 }
 
-func (r ApiBackupIdDeleteRequest) Execute() (*http.Response, error) {
+func (r ZeebeApiBackupIdDeleteRequest) Execute() (*http.Response, error) {
 	return r.ApiService.BackupIdDeleteExecute(r)
 }
 
@@ -38,24 +37,24 @@ BackupIdDelete Delete a backup
 
 Delete a backup with the given id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param backupId Id of the backup
- @return ApiBackupIdDeleteRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param backupId Id of the backup
+	@return ZeebeApiBackupIdDeleteRequest
 */
-func (a *ZeebeApiService) BackupIdDelete(ctx context.Context, backupId int64) ApiBackupIdDeleteRequest {
-	return ApiBackupIdDeleteRequest{
+func (a *ZeebeApiService) BackupIdDelete(ctx context.Context, backupId int64) ZeebeApiBackupIdDeleteRequest {
+	return ZeebeApiBackupIdDeleteRequest{
 		ApiService: a,
-		ctx: ctx,
-		backupId: backupId,
+		ctx:        ctx,
+		backupId:   backupId,
 	}
 }
 
 // Execute executes the request
-func (a *ZeebeApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (*http.Response, error) {
+func (a *ZeebeApiService) BackupIdDeleteExecute(r ZeebeApiBackupIdDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodDelete
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZeebeApiService.BackupIdDelete")
@@ -119,8 +118,8 @@ func (a *ZeebeApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -130,8 +129,8 @@ func (a *ZeebeApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -141,8 +140,8 @@ func (a *ZeebeApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (*ht
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -150,13 +149,13 @@ func (a *ZeebeApiService) BackupIdDeleteExecute(r ApiBackupIdDeleteRequest) (*ht
 	return localVarHTTPResponse, nil
 }
 
-type ApiBackupIdGetRequest struct {
-	ctx context.Context
+type ZeebeApiBackupIdGetRequest struct {
+	ctx        context.Context
 	ApiService *ZeebeApiService
-	backupId int64
+	backupId   int64
 }
 
-func (r ApiBackupIdGetRequest) Execute() (*BackupInfo, *http.Response, error) {
+func (r ZeebeApiBackupIdGetRequest) Execute() (*BackupInfo, *http.Response, error) {
 	return r.ApiService.BackupIdGetExecute(r)
 }
 
@@ -165,26 +164,27 @@ BackupIdGet Get information of a backup
 
 A detailed information of the backup with the give backup id.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param backupId Id of the backup
- @return ApiBackupIdGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param backupId Id of the backup
+	@return ZeebeApiBackupIdGetRequest
 */
-func (a *ZeebeApiService) BackupIdGet(ctx context.Context, backupId int64) ApiBackupIdGetRequest {
-	return ApiBackupIdGetRequest{
+func (a *ZeebeApiService) BackupIdGet(ctx context.Context, backupId int64) ZeebeApiBackupIdGetRequest {
+	return ZeebeApiBackupIdGetRequest{
 		ApiService: a,
-		ctx: ctx,
-		backupId: backupId,
+		ctx:        ctx,
+		backupId:   backupId,
 	}
 }
 
 // Execute executes the request
-//  @return BackupInfo
-func (a *ZeebeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*BackupInfo, *http.Response, error) {
+//
+//	@return BackupInfo
+func (a *ZeebeApiService) BackupIdGetExecute(r ZeebeApiBackupIdGetRequest) (*BackupInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *BackupInfo
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BackupInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZeebeApiService.BackupIdGet")
@@ -248,8 +248,8 @@ func (a *ZeebeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*BackupIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -259,8 +259,8 @@ func (a *ZeebeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*BackupIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -270,8 +270,8 @@ func (a *ZeebeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*BackupIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -281,8 +281,8 @@ func (a *ZeebeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*BackupIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -292,8 +292,8 @@ func (a *ZeebeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*BackupIn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -310,12 +310,12 @@ func (a *ZeebeApiService) BackupIdGetExecute(r ApiBackupIdGetRequest) (*BackupIn
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRootGetRequest struct {
-	ctx context.Context
+type ZeebeApiRootGetRequest struct {
+	ctx        context.Context
 	ApiService *ZeebeApiService
 }
 
-func (r ApiRootGetRequest) Execute() ([]BackupInfo, *http.Response, error) {
+func (r ZeebeApiRootGetRequest) Execute() ([]BackupInfo, *http.Response, error) {
 	return r.ApiService.RootGetExecute(r)
 }
 
@@ -325,25 +325,25 @@ RootGet Lists all available backups
 Returns a list of all available backups with their state and additional info,
 sorted in descending order of backupId.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRootGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ZeebeApiRootGetRequest
 */
-func (a *ZeebeApiService) RootGet(ctx context.Context) ApiRootGetRequest {
-	return ApiRootGetRequest{
+func (a *ZeebeApiService) RootGet(ctx context.Context) ZeebeApiRootGetRequest {
+	return ZeebeApiRootGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []BackupInfo
-func (a *ZeebeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, *http.Response, error) {
+//
+//	@return []BackupInfo
+func (a *ZeebeApiService) RootGetExecute(r ZeebeApiRootGetRequest) ([]BackupInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []BackupInfo
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []BackupInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZeebeApiService.RootGet")
@@ -403,8 +403,8 @@ func (a *ZeebeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -414,8 +414,8 @@ func (a *ZeebeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -425,8 +425,8 @@ func (a *ZeebeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -436,8 +436,8 @@ func (a *ZeebeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, *ht
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -454,18 +454,18 @@ func (a *ZeebeApiService) RootGetExecute(r ApiRootGetRequest) ([]BackupInfo, *ht
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRootPostRequest struct {
-	ctx context.Context
-	ApiService *ZeebeApiService
+type ZeebeApiRootPostRequest struct {
+	ctx               context.Context
+	ApiService        *ZeebeApiService
 	takeBackupRequest *TakeBackupRequest
 }
 
-func (r ApiRootPostRequest) TakeBackupRequest(takeBackupRequest TakeBackupRequest) ApiRootPostRequest {
+func (r ZeebeApiRootPostRequest) TakeBackupRequest(takeBackupRequest TakeBackupRequest) ZeebeApiRootPostRequest {
 	r.takeBackupRequest = &takeBackupRequest
 	return r
 }
 
-func (r ApiRootPostRequest) Execute() (*TakeBackupResponse, *http.Response, error) {
+func (r ZeebeApiRootPostRequest) Execute() (*TakeBackupResponse, *http.Response, error) {
 	return r.ApiService.RootPostExecute(r)
 }
 
@@ -474,24 +474,25 @@ RootPost Takes a backup
 
 Start taking a backup with the given backupId
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRootPostRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ZeebeApiRootPostRequest
 */
-func (a *ZeebeApiService) RootPost(ctx context.Context) ApiRootPostRequest {
-	return ApiRootPostRequest{
+func (a *ZeebeApiService) RootPost(ctx context.Context) ZeebeApiRootPostRequest {
+	return ZeebeApiRootPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return TakeBackupResponse
-func (a *ZeebeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupResponse, *http.Response, error) {
+//
+//	@return TakeBackupResponse
+func (a *ZeebeApiService) RootPostExecute(r ZeebeApiRootPostRequest) (*TakeBackupResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TakeBackupResponse
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *TakeBackupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ZeebeApiService.RootPost")
@@ -556,8 +557,8 @@ func (a *ZeebeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupResp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
@@ -567,8 +568,8 @@ func (a *ZeebeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupResp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -578,8 +579,8 @@ func (a *ZeebeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupResp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 502 {
@@ -589,8 +590,8 @@ func (a *ZeebeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupResp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 504 {
@@ -600,8 +601,8 @@ func (a *ZeebeApiService) RootPostExecute(r ApiRootPostRequest) (*TakeBackupResp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+			newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
