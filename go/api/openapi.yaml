@@ -1,0 +1,399 @@
+openapi: 3.0.2
+info:
+  description: "Management endpoint to query, take, and delete backups of Zeebe."
+  title: Backup Management API
+  version: "1.0"
+servers:
+- url: "{schema}://{host}:{port}/actuator/backups"
+  variables:
+    host:
+      default: localhost
+      description: Management server hostname
+    port:
+      default: "9600"
+      description: Management server port
+    schema:
+      default: http
+      description: Management server schema
+paths:
+  /:
+    get:
+      description: |
+        Returns a list of all available backups with their state and additional info,
+        sorted in descending order of backupId.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackupList'
+          description: |
+            List of all available backups.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "502":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "504":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+      summary: Lists all available backups
+      tags:
+      - zeebe
+      - optimize
+      - operate
+      - tasklist
+    post:
+      description: Start taking a backup with the given backupId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TakeBackupRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TakeBackupResponse'
+          description: Response for take backup request
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "502":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "504":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+      summary: Takes a backup
+      tags:
+      - zeebe
+      - optimize
+      - operate
+      - tasklist
+  /{backupId}:
+    delete:
+      description: Delete a backup with the given id
+      parameters:
+      - description: Id of the backup
+        explode: false
+        in: path
+        name: backupId
+        required: true
+        schema:
+          $ref: '#/components/schemas/BackupId'
+        style: simple
+      responses:
+        "204":
+          description: Backup is deleted
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "502":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "504":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+      summary: Delete a backup
+      tags:
+      - zeebe
+      - optimize
+      - operate
+      - tasklist
+    get:
+      description: A detailed information of the backup with the give backup id.
+      parameters:
+      - description: Id of the backup
+        explode: false
+        in: path
+        name: backupId
+        required: true
+        schema:
+          $ref: '#/components/schemas/BackupId'
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackupInfo'
+          description: Detailed information of a backup
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "502":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+        "504":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Generic error response
+      summary: Get information of a backup
+      tags:
+      - zeebe
+      - optimize
+      - operate
+      - tasklist
+components:
+  parameters:
+    BackupId:
+      description: Id of the backup
+      explode: false
+      in: path
+      name: backupId
+      required: true
+      schema:
+        $ref: '#/components/schemas/BackupId'
+      style: simple
+  responses:
+    Error:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Generic error response
+    BackupList:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BackupList'
+      description: |
+        List of all available backups.
+    BackupInfo:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BackupInfo'
+      description: Detailed information of a backup
+    TakeBackupResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TakeBackupResponse'
+      description: Response for take backup request
+  schemas:
+    Error:
+      description: Generic response for all errors
+      properties:
+        message:
+          description: Error message
+          example: something failed
+          type: string
+      title: Error response
+      type: object
+    BackupId:
+      description: |
+        The ID of the backup. The ID of the backup must be a positive numerical value. As backups
+        are logically ordered by their IDs (ascending), each successive backup must use a higher
+        ID than the previous one.
+      example: 1
+      format: int64
+      minimum: 0
+      title: Backup ID
+      type: integer
+    PartitionId:
+      description: |
+        The ID of a partition. This is always a positive number greater than or equal to 1.
+      example: 3
+      format: int32
+      minimum: 1
+      title: Partition ID
+      type: integer
+    StateCode:
+      description: The state of the backup.
+      enum:
+      - DOES_NOT_EXIST
+      - IN_PROGRESS
+      - COMPLETED
+      - FAILED
+      - INCOMPLETE
+      - INCOMPATIBLE
+      example: IN_PROGRESS
+      title: Backup State
+      type: string
+    BackupList:
+      description: List of backups with their state and additional info
+      items:
+        $ref: '#/components/schemas/BackupInfo'
+      title: List of backups
+      type: array
+    BackupInfo:
+      description: |
+        Detailed status of a backup. The aggregated state is computed from the backup state of each partition as:
+        - If the backup of all partitions is in state 'COMPLETED', then the overall state is 'COMPLETED'.
+        - If one is 'FAILED', then the overall state is 'FAILED'.
+        - Otherwise, if one is 'DOES_NOT_EXIST', then the overall state is 'INCOMPLETE'.
+        - Otherwise, if one is 'IN_PROGRESS', then the overall state is 'IN_PROGRESS'.
+      example:
+        backupId: ""
+        failureReason: ""
+        state: ""
+      properties:
+        backupId:
+          allOf:
+          - $ref: '#/components/schemas/BackupId'
+          readOnly: true
+        state:
+          allOf:
+          - $ref: '#/components/schemas/StateCode'
+          readOnly: true
+        failureReason:
+          description: Reason for failure if the state is 'FAILED'
+          example: ""
+          type: string
+      required:
+      - backupId
+      - state
+      title: Backup Info
+      type: object
+    PartitionBackupInfo:
+      description: Detailed info of the backup for a given partition.
+      properties:
+        partitionId:
+          allOf:
+          - $ref: '#/components/schemas/PartitionId'
+          readOnly: true
+        state:
+          allOf:
+          - $ref: '#/components/schemas/StateCode'
+          readOnly: true
+        failureReason:
+          description: Failure reason if stats is 'FAILED'
+          example: ""
+          type: string
+        createdAt:
+          description: The timestamp at which the backup was started on this partition.
+          example: 2022-09-15T13:10:38.176514094Z
+          format: date-time
+          readOnly: true
+          type: string
+        lastUpdatedAt:
+          description: |
+            The timestamp at which the backup was last updated on this partition, e.g. changed
+            state from IN_PROGRESS to COMPLETED.
+          example: 2022-09-15T13:10:38.176514094Z
+          format: date-time
+          readOnly: true
+          type: string
+        snapshotId:
+          description: The ID of the snapshot which is included in this backup.
+          example: 238632143-55-690906332-690905294
+          readOnly: true
+          type: string
+        checkpointPosition:
+          description: The position of the checkpoint for this backup.
+          example: 10
+          format: int64
+          readOnly: true
+          type: integer
+        brokerId:
+          description: The ID of the broker from which the backup was taken for this
+            partition.
+          example: 0
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+        brokerVersion:
+          description: The version of the broker from which the backup was taken for
+            this partition.
+          example: 8.1.2
+          readOnly: true
+          type: string
+      required:
+      - partitionId
+      - state
+      title: Partition's Backup Info
+      type: object
+    TakeBackupRequest:
+      description: Request body for take backup
+      example:
+        backupId: ""
+      properties:
+        backupId:
+          allOf:
+          - $ref: '#/components/schemas/BackupId'
+          description: The ID of the backup to be taken
+      required:
+      - backupId
+      title: TakeBackupRequest
+      type: object
+    TakeBackupResponse:
+      description: Request body for take backup
+      example:
+        message: message
+      properties:
+        message:
+          description: A message indicating backup has been triggered
+          type: string
+      title: TakeBackupResponse
+      type: object
