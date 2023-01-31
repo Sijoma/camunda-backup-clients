@@ -10,68 +10,68 @@ Testing TasklistApiService
 package camunda_backup_clients
 
 import (
-    "context"
-    "github.com/stretchr/testify/assert"
-    "github.com/stretchr/testify/require"
-    "testing"
-    openapiclient "./openapi"
+	"context"
+	"testing"
+
+	openapiclient "github.com/sijoma/camunda_backup_clients"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func Test_camunda_backup_clients_TasklistApiService(t *testing.T) {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 
-    t.Run("Test TasklistApiService BackupIdDelete", func(t *testing.T) {
+	t.Run("Test TasklistApiService BackupIdDelete", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-        var backupId int64
+		var backupId int64
 
-        resp, httpRes, err := apiClient.TasklistApi.BackupIdDelete(context.Background(), backupId).Execute()
+		httpRes, err := apiClient.TasklistApi.BackupIdDelete(context.Background(), backupId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test TasklistApiService BackupIdGet", func(t *testing.T) {
+	t.Run("Test TasklistApiService BackupIdGet", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-        var backupId int64
+		var backupId int64
 
-        resp, httpRes, err := apiClient.TasklistApi.BackupIdGet(context.Background(), backupId).Execute()
+		resp, httpRes, err := apiClient.TasklistApi.BackupIdGet(context.Background(), backupId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test TasklistApiService RootGet", func(t *testing.T) {
+	t.Run("Test TasklistApiService RootGet", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-        resp, httpRes, err := apiClient.TasklistApi.RootGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TasklistApi.RootGet(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test TasklistApiService RootPost", func(t *testing.T) {
+	t.Run("Test TasklistApiService RootPost", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-        resp, httpRes, err := apiClient.TasklistApi.RootPost(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TasklistApi.RootPost(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
 }

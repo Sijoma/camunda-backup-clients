@@ -10,68 +10,68 @@ Testing OperateApiService
 package camunda_backup_clients
 
 import (
-    "context"
-    "github.com/stretchr/testify/assert"
-    "github.com/stretchr/testify/require"
-    "testing"
-    openapiclient "./openapi"
+	"context"
+	"testing"
+
+	openapiclient "github.com/sijoma/camunda_backup_clients"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func Test_camunda_backup_clients_OperateApiService(t *testing.T) {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 
-    t.Run("Test OperateApiService BackupIdDelete", func(t *testing.T) {
+	t.Run("Test OperateApiService BackupIdDelete", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-        var backupId int64
+		var backupId int64
 
-        resp, httpRes, err := apiClient.OperateApi.BackupIdDelete(context.Background(), backupId).Execute()
+		httpRes, err := apiClient.OperateApi.BackupIdDelete(context.Background(), backupId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test OperateApiService BackupIdGet", func(t *testing.T) {
+	t.Run("Test OperateApiService BackupIdGet", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-        var backupId int64
+		var backupId int64
 
-        resp, httpRes, err := apiClient.OperateApi.BackupIdGet(context.Background(), backupId).Execute()
+		resp, httpRes, err := apiClient.OperateApi.BackupIdGet(context.Background(), backupId).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test OperateApiService RootGet", func(t *testing.T) {
+	t.Run("Test OperateApiService RootGet", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-        resp, httpRes, err := apiClient.OperateApi.RootGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OperateApi.RootGet(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test OperateApiService RootPost", func(t *testing.T) {
+	t.Run("Test OperateApiService RootPost", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-        resp, httpRes, err := apiClient.OperateApi.RootPost(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OperateApi.RootPost(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
 }
