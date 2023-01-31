@@ -1,2 +1,2 @@
 generate: 
-	openapi-generator generate -i openapi-spec.yml -g go -o go --config config.yml
+	openapi-generator generate -i api/openapi.yaml -g go --config config.yml
