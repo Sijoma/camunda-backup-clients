@@ -13,7 +13,7 @@ import (
 	"context"
 	"testing"
 
-	openapiclient "github.com/sijoma/camunda_backup_clients"
+	openapiclient "github.com/sijoma/camunda-backup-clients"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
