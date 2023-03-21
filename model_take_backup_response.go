@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the TakeBackupResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TakeBackupResponse{}
+
 // TakeBackupResponse Request body for take backup
 type TakeBackupResponse struct {
 	// A message indicating backup has been triggered
@@ -50,7 +53,7 @@ func (o *TakeBackupResponse) GetMessage() string {
 // and a boolean to check if the value has been set.
 func (o *TakeBackupResponse) GetMessageOk() (*string, bool) {
 	if o == nil || isNil(o.Message) {
-    return nil, false
+		return nil, false
 	}
 	return o.Message, true
 }
@@ -70,11 +73,19 @@ func (o *TakeBackupResponse) SetMessage(v string) {
 }
 
 func (o TakeBackupResponse) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TakeBackupResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableTakeBackupResponse struct {

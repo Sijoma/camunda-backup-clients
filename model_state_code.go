@@ -21,11 +21,11 @@ type StateCode string
 // List of StateCode
 const (
 	STATECODE_DOES_NOT_EXIST StateCode = "DOES_NOT_EXIST"
-	STATECODE_IN_PROGRESS    StateCode = "IN_PROGRESS"
-	STATECODE_COMPLETED      StateCode = "COMPLETED"
-	STATECODE_FAILED         StateCode = "FAILED"
-	STATECODE_INCOMPLETE     StateCode = "INCOMPLETE"
-	STATECODE_INCOMPATIBLE   StateCode = "INCOMPATIBLE"
+	STATECODE_IN_PROGRESS StateCode = "IN_PROGRESS"
+	STATECODE_COMPLETED StateCode = "COMPLETED"
+	STATECODE_FAILED StateCode = "FAILED"
+	STATECODE_INCOMPLETE StateCode = "INCOMPLETE"
+	STATECODE_INCOMPATIBLE StateCode = "INCOMPATIBLE"
 )
 
 // All allowed values of StateCode enum
@@ -116,3 +116,4 @@ func (v *NullableStateCode) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

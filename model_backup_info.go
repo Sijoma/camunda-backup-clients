@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the BackupInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BackupInfo{}
+
 // BackupInfo Detailed status of a backup. The aggregated state is computed from the backup state of each partition as: - If the backup of all partitions is in state 'COMPLETED', then the overall state is 'COMPLETED'. - If one is 'FAILED', then the overall state is 'FAILED'. - Otherwise, if one is 'DOES_NOT_EXIST', then the overall state is 'INCOMPLETE'. - Otherwise, if one is 'IN_PROGRESS', then the overall state is 'IN_PROGRESS'. 
 type BackupInfo struct {
 	BackupId int64 `json:"backupId"`
@@ -55,7 +58,7 @@ func (o *BackupInfo) GetBackupId() int64 {
 // and a boolean to check if the value has been set.
 func (o *BackupInfo) GetBackupIdOk() (*int64, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.BackupId, true
 }
@@ -79,7 +82,7 @@ func (o *BackupInfo) GetState() StateCode {
 // and a boolean to check if the value has been set.
 func (o *BackupInfo) GetStateOk() (*StateCode, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.State, true
 }
@@ -102,7 +105,7 @@ func (o *BackupInfo) GetFailureReason() string {
 // and a boolean to check if the value has been set.
 func (o *BackupInfo) GetFailureReasonOk() (*string, bool) {
 	if o == nil || isNil(o.FailureReason) {
-    return nil, false
+		return nil, false
 	}
 	return o.FailureReason, true
 }
@@ -122,17 +125,21 @@ func (o *BackupInfo) SetFailureReason(v string) {
 }
 
 func (o BackupInfo) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o BackupInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["backupId"] = o.BackupId
-	}
-	if true {
-		toSerialize["state"] = o.State
-	}
+	// skip: backupId is readOnly
+	// skip: state is readOnly
 	if !isNil(o.FailureReason) {
 		toSerialize["failureReason"] = o.FailureReason
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableBackupInfo struct {

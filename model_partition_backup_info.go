@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the PartitionBackupInfo type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PartitionBackupInfo{}
+
 // PartitionBackupInfo Detailed info of the backup for a given partition.
 type PartitionBackupInfo struct {
 	PartitionId int32 `json:"partitionId"`
@@ -68,7 +71,7 @@ func (o *PartitionBackupInfo) GetPartitionId() int32 {
 // and a boolean to check if the value has been set.
 func (o *PartitionBackupInfo) GetPartitionIdOk() (*int32, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.PartitionId, true
 }
@@ -92,7 +95,7 @@ func (o *PartitionBackupInfo) GetState() StateCode {
 // and a boolean to check if the value has been set.
 func (o *PartitionBackupInfo) GetStateOk() (*StateCode, bool) {
 	if o == nil {
-    return nil, false
+		return nil, false
 	}
 	return &o.State, true
 }
@@ -115,7 +118,7 @@ func (o *PartitionBackupInfo) GetFailureReason() string {
 // and a boolean to check if the value has been set.
 func (o *PartitionBackupInfo) GetFailureReasonOk() (*string, bool) {
 	if o == nil || isNil(o.FailureReason) {
-    return nil, false
+		return nil, false
 	}
 	return o.FailureReason, true
 }
@@ -147,7 +150,7 @@ func (o *PartitionBackupInfo) GetCreatedAt() time.Time {
 // and a boolean to check if the value has been set.
 func (o *PartitionBackupInfo) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
@@ -179,7 +182,7 @@ func (o *PartitionBackupInfo) GetLastUpdatedAt() time.Time {
 // and a boolean to check if the value has been set.
 func (o *PartitionBackupInfo) GetLastUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || isNil(o.LastUpdatedAt) {
-    return nil, false
+		return nil, false
 	}
 	return o.LastUpdatedAt, true
 }
@@ -211,7 +214,7 @@ func (o *PartitionBackupInfo) GetSnapshotId() string {
 // and a boolean to check if the value has been set.
 func (o *PartitionBackupInfo) GetSnapshotIdOk() (*string, bool) {
 	if o == nil || isNil(o.SnapshotId) {
-    return nil, false
+		return nil, false
 	}
 	return o.SnapshotId, true
 }
@@ -243,7 +246,7 @@ func (o *PartitionBackupInfo) GetCheckpointPosition() int64 {
 // and a boolean to check if the value has been set.
 func (o *PartitionBackupInfo) GetCheckpointPositionOk() (*int64, bool) {
 	if o == nil || isNil(o.CheckpointPosition) {
-    return nil, false
+		return nil, false
 	}
 	return o.CheckpointPosition, true
 }
@@ -275,7 +278,7 @@ func (o *PartitionBackupInfo) GetBrokerId() int32 {
 // and a boolean to check if the value has been set.
 func (o *PartitionBackupInfo) GetBrokerIdOk() (*int32, bool) {
 	if o == nil || isNil(o.BrokerId) {
-    return nil, false
+		return nil, false
 	}
 	return o.BrokerId, true
 }
@@ -307,7 +310,7 @@ func (o *PartitionBackupInfo) GetBrokerVersion() string {
 // and a boolean to check if the value has been set.
 func (o *PartitionBackupInfo) GetBrokerVersionOk() (*string, bool) {
 	if o == nil || isNil(o.BrokerVersion) {
-    return nil, false
+		return nil, false
 	}
 	return o.BrokerVersion, true
 }
@@ -327,35 +330,27 @@ func (o *PartitionBackupInfo) SetBrokerVersion(v string) {
 }
 
 func (o PartitionBackupInfo) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o PartitionBackupInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["partitionId"] = o.PartitionId
-	}
-	if true {
-		toSerialize["state"] = o.State
-	}
+	// skip: partitionId is readOnly
+	// skip: state is readOnly
 	if !isNil(o.FailureReason) {
 		toSerialize["failureReason"] = o.FailureReason
 	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.LastUpdatedAt) {
-		toSerialize["lastUpdatedAt"] = o.LastUpdatedAt
-	}
-	if !isNil(o.SnapshotId) {
-		toSerialize["snapshotId"] = o.SnapshotId
-	}
-	if !isNil(o.CheckpointPosition) {
-		toSerialize["checkpointPosition"] = o.CheckpointPosition
-	}
-	if !isNil(o.BrokerId) {
-		toSerialize["brokerId"] = o.BrokerId
-	}
-	if !isNil(o.BrokerVersion) {
-		toSerialize["brokerVersion"] = o.BrokerVersion
-	}
-	return json.Marshal(toSerialize)
+	// skip: createdAt is readOnly
+	// skip: lastUpdatedAt is readOnly
+	// skip: snapshotId is readOnly
+	// skip: checkpointPosition is readOnly
+	// skip: brokerId is readOnly
+	// skip: brokerVersion is readOnly
+	return toSerialize, nil
 }
 
 type NullablePartitionBackupInfo struct {

@@ -1,13 +1,13 @@
-# \TasklistApi
+# \DefaultApi
 
 All URIs are relative to *http://localhost:9600/actuator/backups*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**BackupIdDelete**](TasklistApi.md#BackupIdDelete) | **Delete** /{backupId} | Delete a backup
-[**BackupIdGet**](TasklistApi.md#BackupIdGet) | **Get** /{backupId} | Get information of a backup
-[**RootGet**](TasklistApi.md#RootGet) | **Get** / | Lists all available backups
-[**RootPost**](TasklistApi.md#RootPost) | **Post** / | Takes a backup
+[**BackupIdDelete**](DefaultApi.md#BackupIdDelete) | **Delete** /{backupId} | Delete a backup
+[**BackupIdGet**](DefaultApi.md#BackupIdGet) | **Get** /{backupId} | Get information of a backup
+[**RootGet**](DefaultApi.md#RootGet) | **Get** / | Lists all available backups
+[**RootPost**](DefaultApi.md#RootPost) | **Post** / | Takes a backup
 
 
 
@@ -36,9 +36,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TasklistApi.BackupIdDelete(context.Background(), backupId).Execute()
+    resp, r, err := apiClient.DefaultApi.BackupIdDelete(context.Background(), backupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TasklistApi.BackupIdDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.BackupIdDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -104,13 +104,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TasklistApi.BackupIdGet(context.Background(), backupId).Execute()
+    resp, r, err := apiClient.DefaultApi.BackupIdGet(context.Background(), backupId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TasklistApi.BackupIdGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.BackupIdGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `BackupIdGet`: BackupInfo
-    fmt.Fprintf(os.Stdout, "Response from `TasklistApi.BackupIdGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.BackupIdGet`: %v\n", resp)
 }
 ```
 
@@ -173,13 +173,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TasklistApi.RootGet(context.Background()).Execute()
+    resp, r, err := apiClient.DefaultApi.RootGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TasklistApi.RootGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.RootGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RootGet`: []BackupInfo
-    fmt.Fprintf(os.Stdout, "Response from `TasklistApi.RootGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.RootGet`: %v\n", resp)
 }
 ```
 
@@ -235,13 +235,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TasklistApi.RootPost(context.Background()).TakeBackupRequest(takeBackupRequest).Execute()
+    resp, r, err := apiClient.DefaultApi.RootPost(context.Background()).TakeBackupRequest(takeBackupRequest).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TasklistApi.RootPost``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.RootPost``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RootPost`: TakeBackupResponse
-    fmt.Fprintf(os.Stdout, "Response from `TasklistApi.RootPost`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.RootPost`: %v\n", resp)
 }
 ```
 

@@ -54,11 +54,6 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Generic error response
       summary: Lists all available backups
-      tags:
-      - zeebe
-      - optimize
-      - operate
-      - tasklist
     post:
       description: Start taking a backup with the given backupId
       requestBody:
@@ -105,11 +100,6 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Generic error response
       summary: Takes a backup
-      tags:
-      - zeebe
-      - optimize
-      - operate
-      - tasklist
   /{backupId}:
     delete:
       description: Delete a backup with the given id
@@ -144,11 +134,6 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Generic error response
       summary: Delete a backup
-      tags:
-      - zeebe
-      - optimize
-      - operate
-      - tasklist
     get:
       description: A detailed information of the backup with the give backup id.
       parameters:
@@ -198,11 +183,6 @@ paths:
                 $ref: '#/components/schemas/Error'
           description: Generic error response
       summary: Get information of a backup
-      tags:
-      - zeebe
-      - optimize
-      - operate
-      - tasklist
 components:
   parameters:
     BackupId:

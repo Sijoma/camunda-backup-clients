@@ -1,7 +1,7 @@
 /*
 Backup Management API
 
-Testing OptimizeApiService
+Testing DefaultApiService
 
 */
 
@@ -18,31 +18,31 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func Test_camunda_backup_clients_OptimizeApiService(t *testing.T) {
+func Test_camunda_backup_clients_DefaultApiService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test OptimizeApiService BackupIdDelete", func(t *testing.T) {
+	t.Run("Test DefaultApiService BackupIdDelete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var backupId int64
 
-		httpRes, err := apiClient.OptimizeApi.BackupIdDelete(context.Background(), backupId).Execute()
+		httpRes, err := apiClient.DefaultApi.BackupIdDelete(context.Background(), backupId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test OptimizeApiService BackupIdGet", func(t *testing.T) {
+	t.Run("Test DefaultApiService BackupIdGet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var backupId int64
 
-		resp, httpRes, err := apiClient.OptimizeApi.BackupIdGet(context.Background(), backupId).Execute()
+		resp, httpRes, err := apiClient.DefaultApi.BackupIdGet(context.Background(), backupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,11 +50,11 @@ func Test_camunda_backup_clients_OptimizeApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test OptimizeApiService RootGet", func(t *testing.T) {
+	t.Run("Test DefaultApiService RootGet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OptimizeApi.RootGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DefaultApi.RootGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,11 +62,11 @@ func Test_camunda_backup_clients_OptimizeApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test OptimizeApiService RootPost", func(t *testing.T) {
+	t.Run("Test DefaultApiService RootPost", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OptimizeApi.RootPost(context.Background()).Execute()
+		resp, httpRes, err := apiClient.DefaultApi.RootPost(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

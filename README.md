@@ -15,7 +15,6 @@ Install the following dependencies:
 
 ```shell
 go get github.com/stretchr/testify/assert
-go get golang.org/x/oauth2
 go get golang.org/x/net/context
 ```
 
@@ -78,22 +77,10 @@ All URIs are relative to *http://localhost:9600/actuator/backups*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*OperateApi* | [**BackupIdDelete**](docs/OperateApi.md#backupiddelete) | **Delete** /{backupId} | Delete a backup
-*OperateApi* | [**BackupIdGet**](docs/OperateApi.md#backupidget) | **Get** /{backupId} | Get information of a backup
-*OperateApi* | [**RootGet**](docs/OperateApi.md#rootget) | **Get** / | Lists all available backups
-*OperateApi* | [**RootPost**](docs/OperateApi.md#rootpost) | **Post** / | Takes a backup
-*OptimizeApi* | [**BackupIdDelete**](docs/OptimizeApi.md#backupiddelete) | **Delete** /{backupId} | Delete a backup
-*OptimizeApi* | [**BackupIdGet**](docs/OptimizeApi.md#backupidget) | **Get** /{backupId} | Get information of a backup
-*OptimizeApi* | [**RootGet**](docs/OptimizeApi.md#rootget) | **Get** / | Lists all available backups
-*OptimizeApi* | [**RootPost**](docs/OptimizeApi.md#rootpost) | **Post** / | Takes a backup
-*TasklistApi* | [**BackupIdDelete**](docs/TasklistApi.md#backupiddelete) | **Delete** /{backupId} | Delete a backup
-*TasklistApi* | [**BackupIdGet**](docs/TasklistApi.md#backupidget) | **Get** /{backupId} | Get information of a backup
-*TasklistApi* | [**RootGet**](docs/TasklistApi.md#rootget) | **Get** / | Lists all available backups
-*TasklistApi* | [**RootPost**](docs/TasklistApi.md#rootpost) | **Post** / | Takes a backup
-*ZeebeApi* | [**BackupIdDelete**](docs/ZeebeApi.md#backupiddelete) | **Delete** /{backupId} | Delete a backup
-*ZeebeApi* | [**BackupIdGet**](docs/ZeebeApi.md#backupidget) | **Get** /{backupId} | Get information of a backup
-*ZeebeApi* | [**RootGet**](docs/ZeebeApi.md#rootget) | **Get** / | Lists all available backups
-*ZeebeApi* | [**RootPost**](docs/ZeebeApi.md#rootpost) | **Post** / | Takes a backup
+*DefaultApi* | [**BackupIdDelete**](docs/DefaultApi.md#backupiddelete) | **Delete** /{backupId} | Delete a backup
+*DefaultApi* | [**BackupIdGet**](docs/DefaultApi.md#backupidget) | **Get** /{backupId} | Get information of a backup
+*DefaultApi* | [**RootGet**](docs/DefaultApi.md#rootget) | **Get** / | Lists all available backups
+*DefaultApi* | [**RootPost**](docs/DefaultApi.md#rootpost) | **Post** / | Takes a backup
 
 
 ## Documentation For Models

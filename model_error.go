@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the Error type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Error{}
+
 // Error Generic response for all errors
 type Error struct {
 	// Error message
@@ -50,7 +53,7 @@ func (o *Error) GetMessage() string {
 // and a boolean to check if the value has been set.
 func (o *Error) GetMessageOk() (*string, bool) {
 	if o == nil || isNil(o.Message) {
-    return nil, false
+		return nil, false
 	}
 	return o.Message, true
 }
@@ -70,11 +73,19 @@ func (o *Error) SetMessage(v string) {
 }
 
 func (o Error) MarshalJSON() ([]byte, error) {
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o Error) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
-	return json.Marshal(toSerialize)
+	return toSerialize, nil
 }
 
 type NullableError struct {
