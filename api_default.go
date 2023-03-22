@@ -351,7 +351,7 @@ func (a *DefaultApiService) RootGetExecute(r DefaultApiRootGetRequest) ([]Backup
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/"
+	localVarPath := localBasePath
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -499,7 +499,7 @@ func (a *DefaultApiService) RootPostExecute(r DefaultApiRootPostRequest) (*TakeB
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/"
+	localVarPath := localBasePath
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
